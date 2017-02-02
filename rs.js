@@ -1,10 +1,10 @@
 const Redis = require('redis');
 const cfg = require('./config.js');
 const Monitor = require('./monitor.js');
-const queueNamespace = process.env.NODE_QUEUE_NAMESPACE;
+const queueNamespace = process.env.NODE_QUEUE_NAMESPACE === undefined ? 'will' : process.env.NODE_QUEUE_NAMESPACE;
 
-const GA_SEMAPHORE = `${queueNamespace}.ms.semaphore.insight.worker`;
-const INSIGHTS_SEMAPHORE = `${queueNamespace}.ms.semaphore.ga.etl.worker`;
+const GA_SEMAPHORE = `${queueNamespace}.ga`;
+const INSIGHTS_SEMAPHORE = `${queueNamespace}.insights`;
 
 var newConnection = function () {
   var client = Redis.createClient(redisConf);
