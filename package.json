@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Will Schumacher <willjschumacher@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "redis": "^2.6.5"
+  }
 }
