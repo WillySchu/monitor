@@ -7,10 +7,11 @@ class Monitor {
 
   listen() {
     setInterval(() => {
+      console.log(this.check);
       this.check()
-        .then(alert)
-        .catch(alert)
-    }, timeout)
+        .then(this.alert)
+        .catch(this.alert)
+    }, this.timeout)
   }
 }
 
