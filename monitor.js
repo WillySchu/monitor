@@ -7,7 +7,6 @@ class Monitor {
 
   listen() {
     setInterval(() => {
-      console.log(this.check);
       this.check()
         .then(this.alert)
         .catch(this.alert)

@@ -1,9 +1,12 @@
 const Monitor = require('./monitor.js');
-const checkSemaphore = require('./rs.js');
+const checkGA = require('./rs.js').checkGA;
+const checkInsights = require('./rs.js').checkInsights;
 
 function alert(arg) {
   // send an alert somewhere
   console.log(arg)
 }
-m = new Monitor(1000, checkSemaphore, alert);
-m.listen();
+mg = new Monitor(1000, checkGA, alert);
+ml = new Monitor(1000, checkInsights, alert);
+ml.listen();
+mg.listen();

@@ -3,7 +3,8 @@ const cfg = require('./config.js');
 const Monitor = require('./monitor.js');
 const queueNamespace = process.env.NODE_QUEUE_NAMESPACE;
 
-const WORKER_SEMAPHORE = `${queueNamespace}.ms.semaphore.insight.worker`;
+const GA_SEMAPHORE = `${queueNamespace}.ms.semaphore.insight.worker`;
+const INSIGHTS_SEMAPHORE = `${queueNamespace}.ms.semaphore.ga.etl.worker`;
 
 var newConnection = function () {
   var client = Redis.createClient(redisConf);
@@ -21,12 +22,9 @@ var getSemaphore = function (key) {
 var redis = Redis.createClient(cfg.redis)
 
 function checkSemaphore(namespace) {
-  console.log(namespace);
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>');
   return new Promise((resolve, reject) => {
     getSemaphore(namespace)
     .then(res => {
-      console.log(res);
       if (res === true) return resolve(res);
       reject('No worker alive');
     })
@@ -34,4 +32,5 @@ function checkSemaphore(namespace) {
   })
 }
 
-module.exports = checkSemaphore.bind(this, WORKER_SEMAPHORE)
+module.exports.checkGA = checkSemaphore.bind(this, GA_SEMAPHORE)
+module.exports.checkInsights = checkSemaphore.bind(this, INSIGHTS_SEMAPHORE)
