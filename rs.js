@@ -8,7 +8,10 @@ if (process.env.MONITOR) {
 } else {
   const Redis = require('redis');
   queueNamespace = process.env.NODE_QUEUE_NAMESPACE === undefined ? 'will' : process.env.NODE_QUEUE_NAMESPACE;
-  const redisConf = 'localhost';
+  const redisConf = {
+    host: 'localhost',
+    port: '6379'
+  }
   redis = Redis.createClient(redisConf);
 }
 
