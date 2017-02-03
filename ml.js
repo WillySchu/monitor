@@ -1,13 +1,12 @@
-// deployed ---
-// const libs = require('@metricstory/libs');
-// const db = require('db/monk');
-// end deployed ---
+var db;
 
-
-// local ---
-const monk = require('monk');
-const db = monk('localhost');
-// end local ---
+if (process.env.MONITOR) {
+  const libs = require('@metricstory/libs');
+  db = require('db/monk');
+} else {
+  const monk = require('monk');
+  db = monk('localhost');
+}
 
 col = db.get('logs');
 
