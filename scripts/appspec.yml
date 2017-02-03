@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/monitor
+hooks:
+  ApplicationStart:
+    - location: scripts/startapp.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/removeapp.sh
+      timeout: 300
+      runas: root
