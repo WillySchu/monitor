@@ -2,7 +2,7 @@ var db;
 
 if (process.env.MONITOR) {
   const libs = require('@metricstory/libs');
-  db = require('db/monk');
+  db = libs('db/monk');
 } else {
   const monk = require('monk');
   db = monk('localhost');

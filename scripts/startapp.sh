@@ -47,7 +47,7 @@ ln -s $DIR/libs .
 cd $DIR
 chown -R ubuntu:ubuntu $DIR
 
-nohup node index.js 1 >> "$LOG_DIR/backfillWidgets.log" 2>&1 &
+MONITOR=true nohup node index.js 1 >> "$LOG_DIR/backfillWidgets.log" 2>&1 &
 echo "Started backfillWidgets.js successfully"
 
 exit 0

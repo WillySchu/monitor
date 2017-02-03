@@ -3,7 +3,7 @@ var queueNamespace;
 
 if (process.env.MONITOR) {
   const libs = require('@metricstory/libs');
-  redis = require('db/redis');
+  redis = libs('db/redis');
   queueNamespace = process.env.NODE_QUEUE_NAMESPACE === undefined ? libs.cfg.env : process.env.NODE_QUEUE_NAMESPACE;
 } else {
   const Redis = require('redis');
