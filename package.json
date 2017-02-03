@@ -10,6 +10,7 @@
   "author": "Will Schumacher <willjschumacher@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "monk": "^3.1.4",
     "redis": "^2.6.5",
     "websocket": "^1.0.24"
   }

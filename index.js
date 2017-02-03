@@ -4,6 +4,7 @@ const http = require('http');
 const Monitor = require('./monitor.js');
 const checkGA = require('./rs.js').checkGA;
 const checkInsights = require('./rs.js').checkInsights;
+const checkMongo = require('./ml.js').checkMongo;
 
 var alert;
 
@@ -47,6 +48,8 @@ wsServer.on('request', req => {
 
   mg = new Monitor(1000, checkGA, alert.bind(this, 'ga'));
   ml = new Monitor(1000, checkInsights, alert.bind(this, 'insights'));
+  mm = new Monitor(1000, checkMongo, alert.bind(this, 'logs'))
   ml.listen();
   mg.listen();
+  mm.listen();
 })
