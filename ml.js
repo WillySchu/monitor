@@ -1,6 +1,13 @@
+// deployed ---
+// const libs = require('@metricstory/libs');
+// const monk = require('db/monk');
+// end deployed ---
+
+
+// local ---
 const monk = require('monk');
-const cfg = require('./config.js');
-const db = monk(cfg.mongodb.url)
+const db = monk('localhost');
+// end local ---
 
 col = db.get('logs');
 

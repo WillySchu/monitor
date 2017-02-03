@@ -1,7 +1,17 @@
+// deployed ---
+// const libs = require('@metricstory/libs');
+// const redis = require('db/redis');
+// const queueNamespace = process.env.NODE_QUEUE_NAMESPACE === undefined ? libs.cfg.env : process.env.NODE_QUEUE_NAMESPACE;
+// end deployed ---
+
+// local ---
 const Redis = require('redis');
-const cfg = require('./config.js');
-const Monitor = require('./monitor.js');
 const queueNamespace = process.env.NODE_QUEUE_NAMESPACE === undefined ? 'will' : process.env.NODE_QUEUE_NAMESPACE;
+const redisConf = 'localhost';
+var redis = Redis.createClient(redisConf)
+// end local ---
+
+const Monitor = require('./monitor.js');
 
 const GA_SEMAPHORE = `${queueNamespace}.ga`;
 const INSIGHTS_SEMAPHORE = `${queueNamespace}.insights`;
@@ -18,8 +28,6 @@ var getSemaphore = function (key) {
     });
   })
 }
-
-var redis = Redis.createClient(cfg.redis)
 
 function checkSemaphore(namespace) {
   return new Promise((resolve, reject) => {
