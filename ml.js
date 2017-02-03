@@ -1,6 +1,6 @@
 // deployed ---
 // const libs = require('@metricstory/libs');
-// const monk = require('db/monk');
+// const db = require('db/monk');
 // end deployed ---
 
 
