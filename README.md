@@ -31,16 +31,28 @@ Works pretty much the same, need to have env variable for node to look for the c
 
 ## Requirements:
 
-check mongodb server
+### check mongodb server
 
-check angular app
+Periodically ping the mongodb server to ensure that it's alive. Could set up a dumby collection to hit for this.
 
-check marketing site
+### check angular app
 
-check refresh tokens
 
-check node server
 
-check quota usage
+### check marketing site
 
-stretch: cloudwatch integration
+Hit the marketing site to ensure that it's up
+
+### check refresh tokens
+
+Make sure the refresh token worker is alive and is actually, correctly refreshing auth tokens
+
+### check node server
+
+Hit a route on the node server for this. Probably create a new socket connection?
+
+### check quota usage
+
+Pull quota usage out of redis and display it to give an accurate view of how many requests have been used and how many are left, per company and overall.
+
+### stretch: cloudwatch integration
